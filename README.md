@@ -71,3 +71,7 @@ Having my laptop with Qubes *is* the second factor.
 * The total time of using each VM can be logged and analyzed.
   [I wrote a tool to do that](https://github.com/Kixunil/ttt).
 * Using DVMs for tests of my Debian packages makes it easy to solve corrupted system - just kill the VM and start a new one.
+
+## Extra ideas that I don't use yet but may in the future
+
+* [How to install potentially malicious binaries efficiently](installing_dangerous_binaries.md)

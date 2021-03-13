@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Qubes RPC server for uploading files to nextcloud
+
+. ~/.config/nextcloud-upload || exit 1
+
+if [ -z "$1" ];
+then
+	echo "Missing file name" >&2
+	exit 1
+fi
+
+if echo "$1" | grep '^\.\./' || echo "$1" | grep '/\.\./' || echo "$1" | grep '\.\.$' || echo "$1" | grep '^\.\.$';
+then
+	echo "Directory traversal denied" >&2
+	exit 1
+fi
+
+file_name="$user_name/QubesIncoming/$QREXEC_REMOTE_DOMAIN/$1"
+
+# Create directories first
+curl -s --netrc -X MKCOL "$nc_server/remote.php/dav/files/$user_name/QubesIncoming" &>/dev/null
+curl -s --netrc -X MKCOL "$nc_server/remote.php/dav/files/$user_name/QubesIncoming/$QREXEC_REMOTE_DOMAIN" &>/dev/null
+
+# Upload
+curl --netrc -S -T - "$nc_server/remote.php/dav/files/$file_name" || exit 1

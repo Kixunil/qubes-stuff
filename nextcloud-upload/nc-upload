@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Qubes RPC client for nextcloud-upload
+
+vm="`cat /etc/nextcloud-vm`"
+
+while [ $# -gt 0 ];
+do
+	filename="`basename "$1"`"
+	/usr/lib/qubes/qrexec-client-vm "$vm" nextcloud-upload+"$filename" < "$1"
+	shift
+done

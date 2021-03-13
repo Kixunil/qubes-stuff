@@ -52,6 +52,10 @@ The `qpay` service runs in `ssh-client` which connects to a dedicated LN node.
 
 I have forwarded important ports (22, 80, 443) of my node so that I don't have to mess around with Tor.
 
+## Nextcloud
+
+I wrote a [tool for securely uploading files to Nextcloud](nextcloud-upload) from any VM.
+
 ## Passwords and security
 
 The isolation of Qubes allows me to remember passwords in the browser without having to worry much about it.

@@ -31,13 +31,8 @@ Some cool stuff:
 
 Several applications I use need a tunnel to a remote machine.
 This remote machine is controlled using SSH from a dedicated VM (`ssh-client`).
-I start `autossh` using `/rw/config/rc.local` with the port forwarding options.
-(See also how to send it a signal when the network changes.)
-I use `socat` as a Qubes RPC service to provide these ports to other VMs.
-Dom0 controls the access to these ports.
-`socat` in individual VMs bridges the applications with Qubes RPC.
 
-Credit for the idea goes to [Bitcoin Trezor Wiki](https://wiki.trezor.io/Qubes_OS)
+To reduce the number of connections and improve security I have services that reuse one `autossh` connection. See [`tunneling.md`](tunneling.md).
 
 ## LNP/BP
 
